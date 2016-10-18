@@ -5,7 +5,7 @@ My personal vimrc files
 ## Install
 
 ```
-   git clone https://github.com/jack-nie/vim-conf.git ~/.vim
+   git clone --recursive https://github.com/jack-nie/vim-conf.git ~/.vim
    ln -s ~/.vimrc ~/.vim/.vimrc
 ```
 
