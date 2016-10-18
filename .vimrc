@@ -47,7 +47,7 @@ call vundle#begin()
 "let path = '~/some/path/here'
 "call vundle#rc(path)
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/vundle'
+Plugin 'VundleVim/Vundle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-bundler'
