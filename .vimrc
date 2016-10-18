@@ -62,7 +62,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'mattn/emmet-vim'
 Plugin 'pbrisbin/vim-mkdir'
-Plugin 'vim-scripts/The-NERD-Commenter'
 Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jiangmiao/auto-pairs'
@@ -71,6 +70,9 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 filetype plugin indent on " required
@@ -92,7 +94,7 @@ let g:airline_powerline_fonts = 0
 set t_Co=256
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_detect_whitespace = 0 "关闭空白符检测
+let g:airline_detect_whitespace = 1 "关闭空白符检测
 "========================>Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -109,6 +111,7 @@ let mapleader= "\<Space>"
 set completefunc=syntaxcomplete#Complete
 
 let g:syntastic_check_on_open=1
+"let g:syntastic_ruby_checkers=['rubocop', 'mri']
 "========================>replace grep with ag
 if executable('ag')
 	" Use Ag over Grep
@@ -117,6 +120,7 @@ if executable('ag')
 	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 	" Ag is fast enough that CtrlP doesn't need to cache
 	let g:ctrlp_use_caching = 0
+  let g:ackprg = 'ag'
 endif
 "===========================>auto-pairs
 let g:AutoPairsFlyMode = 1
@@ -162,3 +166,4 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+autocmd Filetype ruby compiler ruby
