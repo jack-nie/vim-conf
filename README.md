@@ -6,7 +6,7 @@ My personal vimrc files
 
 ```
    git clone --recursive https://github.com/jack-nie/vim-conf.git ~/.vim
-   ln -s ~/.vimrc ~/.vim/.vimrc
+   ln -s  ~/.vim/.vimrc ~/.vimrc
 ```
 
 then open vim, `:PluginInstall`, done.
