@@ -1,6 +1,7 @@
 let &termencoding=&encoding
 set fileencodings=utf-8,gbk
-set background=light "字体 "set guifont=Monaco:h10
+set background=light
+set guifont=Monaco:h10
 set hlsearch
 set mouse=a
 set nocompatible
@@ -36,7 +37,7 @@ autocmd BufReadPost *
 \ exe "normal! g`\"" |
 \ endif
 "++++++++++++++++++++++++++++++++++++++++++++++
-" 设定Vundle
+" configure Vundle
 set nocompatible " be iMproved, required
 filetype off " required
 " set the runtime path to include Vundle and initialize
@@ -47,13 +48,13 @@ call vundle#begin()
 "let path = '~/some/path/here'
 "call vundle#rc(path)
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-bundler'
 Plugin 'vim-scripts/AutoComplPop'
 Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'FencView.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -69,6 +70,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'mileszs/ack.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'fatih/vim-go'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 call vundle#end()
 filetype plugin indent on " required
@@ -86,11 +88,13 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip " MacOSX/Linux
 "let g:ctrlp_user_command = 'find %s -type f' " MacOSX/Linux
 "========================>vim-airline
-let g:airline_powerline_fonts = 0
+let g:airline_theme="bubblegum"
+let g:airline_powerline_fonts = 1
 set t_Co=256
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_detect_whitespace = 1 "关闭空白符检测
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_detect_whitespace = 1 "enable whitespace detection
 "========================>Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
