@@ -1,10 +1,11 @@
 let &termencoding=&encoding
 set fileencodings=utf-8,gbk
-set background=light
+set background=dark
 set guifont=Monaco:h10
 set hlsearch
 set mouse=a
 set nocompatible
+colorscheme solarized
 syntax on
 filetype on
 filetype plugin on
@@ -88,10 +89,10 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip " MacOSX/Linux
 "let g:ctrlp_user_command = 'find %s -type f' " MacOSX/Linux
 "========================>vim-airline
-let g:airline_theme="bubblegum"
+let g:airline_theme="luna"
 let g:airline_powerline_fonts = 1
 set t_Co=256
-set laststatus=2
+set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_detect_whitespace = 1 "enable whitespace detection
@@ -147,8 +148,6 @@ nnoremap <Leader>7 :7b<CR>
 nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
-
-set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 "===========================> snippets for erb
 autocmd BufRead,BufNewFile *.html.erb set filetype=html
