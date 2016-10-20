@@ -90,7 +90,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip " MacOSX/Linux
 "let g:ctrlp_user_command = 'find %s -type f' " MacOSX/Linux
 "========================>vim-airline
 let g:airline_theme="luna"
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 set t_Co=256
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 let g:airline#extensions#tabline#enabled = 1
