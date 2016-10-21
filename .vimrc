@@ -88,6 +88,9 @@ filetype plugin indent on " required
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip " MacOSX/Linux
 "let g:ctrlp_user_command = 'find %s -type f' " MacOSX/Linux
+"========================>Disable beep and flash with an autocmd
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 "========================>vim-airline
 let g:airline_theme="luna"
 let g:airline_powerline_fonts = 0
