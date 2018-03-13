@@ -10,8 +10,6 @@ syntax on
 filetype on
 filetype plugin on
 filetype indent on
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
 set number
 set tabstop=2
 set shiftwidth=2
@@ -33,7 +31,6 @@ set undodir=~/.backup/undo/,~/tmp,.
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
 "disable paste
 set nopaste
 
