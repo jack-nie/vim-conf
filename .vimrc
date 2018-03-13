@@ -5,7 +5,7 @@ set guifont=Monaco:h10
 set hlsearch
 set mouse=a
 set nocompatible
-colorscheme solarized
+" colorscheme solarized
 syntax on
 filetype on
 filetype plugin on
@@ -28,6 +28,9 @@ set backupskip+=~/tmp/*,/private/tmp/* " skip backups on OSX temp dir, for cront
 set noswapfile          " do not write .swp files
 set undofile
 set undodir=~/.backup/undo/,~/tmp,.
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
 "disable paste
 set nopaste
@@ -167,3 +170,9 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
