@@ -28,6 +28,7 @@ set backupskip+=~/tmp/*,/private/tmp/* " skip backups on OSX temp dir, for cront
 set noswapfile          " do not write .swp files
 set undofile
 set undodir=~/.backup/undo/,~/tmp,.
+set autowrite
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -35,9 +36,9 @@ set backspace=indent,eol,start
 set nopaste
 
 autocmd BufReadPost *
-\ if line("'\"") > 1 && line("'\"") <= line("$") |
-\ exe "normal! g`\"" |
-\ endif
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \ exe "normal! g`\"" |
+      \ endif
 "++++++++++++++++++++++++++++++++++++++++++++++
 " configure Vundle
 set nocompatible " be iMproved, required
@@ -53,7 +54,6 @@ call vundle#begin()
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-bundler'
-Plugin 'vim-scripts/AutoComplPop'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -73,7 +73,9 @@ Plugin 'mileszs/ack.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'fatih/vim-go'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
-
+Plugin 'rizzatti/dash.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'AutoComplPop'
 call vundle#end()
 filetype plugin indent on " required
 " To ignore plugin indent changes, instead use:
@@ -93,7 +95,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip " MacOSX/Linux
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 "========================>vim-airline
-let g:airline_theme="luna"
+let g:airline_theme="simple"
 let g:airline_powerline_fonts = 0
 set t_Co=256
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
@@ -156,22 +158,26 @@ nnoremap <Leader>0 :10b<CR>
 "===========================> snippets for erb
 autocmd BufRead,BufNewFile *.html.erb set filetype=html
 
+"===========================> auto import for go
+let g:go_fmt_command = "goimports"
+
 "===========================> Remove trailing white spaces
 function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
+" au BufWrite * :Autoformat
